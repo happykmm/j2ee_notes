@@ -1,0 +1,38 @@
+service调用数据库流程：
+xxxMapper.findById( param )
+-> dao 写方法名   xxxMapper.java
+-> mapping 写sql  xxxMapper.xml
+
+param： basic type|| entity || dto
+return：void || basic type || collection || entity || dto
+
+service notation:
+@Service
+public class FooService {
+	@Resource
+	private FooMapper fooMapper;
+
+	public return_type function_name( param ) {
+		//...
+	}
+}
+
+
+SELECT
+	inv.id,
+	veh.vehicleNo,
+	cli.name client_name,
+	cus.name customer_name,
+	inv.investi_people,
+	inv.investi_date,
+	inv.investi_result
+FROM
+	bas_investigate inv
+CROSS JOIN bas_vehicle veh
+CROSS JOIN bas_client cli
+CROSS JOIN bas_customer cus
+WHERE
+	inv.vehicleId = veh.id
+AND veh.clientId = cli.id
+AND veh.id = cus.id
+AND inv.investi_date >= "2016-01-01"
