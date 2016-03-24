@@ -1,4 +1,4 @@
-service调用数据库流程：
+﻿service调用数据库流程：
 xxxMapper.findById( param )
 -> dao 写方法名   xxxMapper.java
 -> mapping 写sql  xxxMapper.xml
@@ -36,3 +36,6 @@ WHERE
 AND veh.clientId = cli.id
 AND veh.id = cus.id
 AND inv.investi_date >= "2016-01-01"
+
+
+pom.xml 项目依赖配置文件，更新后自动下载
